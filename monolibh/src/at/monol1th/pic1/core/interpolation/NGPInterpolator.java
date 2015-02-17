@@ -35,10 +35,11 @@ public class NGPInterpolator implements IInterpolator {
 			if( ngp != ngp0)
 			{
 				Cell cell = grid.getCell(p.x);
-				cell.jx += (ngp - ngp0) * p.q / grid.dx;
-			}
-		}
-	}
+                //cell.jx += (ngp - ngp0) * p.q / grid.dx;
+                cell.jx += (ngp - ngp0) * p.q / dt;
+            }
+        }
+    }
 
 	public void interpolateFieldsToParticles(ParticleList particleList, Grid grid) {
 		List<Particle> list = particleList.list;
