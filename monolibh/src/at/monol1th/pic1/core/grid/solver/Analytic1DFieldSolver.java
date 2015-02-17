@@ -2,17 +2,17 @@ package at.monol1th.pic1.core.grid.solver;
 
 import at.monol1th.pic1.core.grid.Grid;
 import at.monol1th.pic1.core.particles.Particle;
-import at.monol1th.pic1.core.particles.ParticleList;
+import at.monol1th.pic1.core.particles.ParticleManager;
 
 /**
  * Created by David on 15.02.2015.
  */
 public class Analytic1DFieldSolver implements IFieldSolver
 {
-	public void solveFields(Grid g, ParticleList pL)
+	public void solveFields(Grid g, ParticleManager pL)
 	{
 		g.clearElectricField();
-		for(Particle p : pL.list)
+		for(Particle p : pL.listOfParticles)
 		{
 			/*
 				Cycle through each particle, apply (interpolated) analytic solution.

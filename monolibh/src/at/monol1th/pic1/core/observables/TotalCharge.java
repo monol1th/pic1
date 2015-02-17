@@ -28,7 +28,7 @@ public class TotalCharge {
 	public double computeTotalChargeFromParticles()
 	{
 		double Q = 0.0;
-		for(Particle p : s.particleList.list)
+		for(Particle p : s.particleManager.listOfParticles)
 		{
 			Q += p.q;
 		}

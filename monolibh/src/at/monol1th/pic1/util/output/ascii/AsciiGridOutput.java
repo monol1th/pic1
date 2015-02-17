@@ -44,7 +44,7 @@ public class AsciiGridOutput
 		/*
 			Draw particles.
 		 */
-		for(Particle p : s.particleList.list)
+		for(Particle p : s.particleManager.listOfParticles)
 		{
 			int ix = (int) (p.x / this.dx);
 			if(p.q > 0)     output1[ix] = 'X';

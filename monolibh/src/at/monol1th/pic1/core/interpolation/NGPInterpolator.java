@@ -3,7 +3,7 @@ package at.monol1th.pic1.core.interpolation;
 import at.monol1th.pic1.core.grid.Cell;
 import at.monol1th.pic1.core.grid.Grid;
 import at.monol1th.pic1.core.particles.Particle;
-import at.monol1th.pic1.core.particles.ParticleList;
+import at.monol1th.pic1.core.particles.ParticleManager;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import java.util.List;
  * Created by David on 14.02.2015.
  */
 public class NGPInterpolator implements IInterpolator {
-	public void interpolateParticlesToChargeDensity(ParticleList particleList, Grid grid) {
-		List<Particle> list = particleList.list;
+	public void interpolateParticlesToChargeDensity(ParticleManager particleManager, Grid grid) {
+		List<Particle> list = particleManager.listOfParticles;
 		grid.clearChargeDensity();
 
 		for(Particle p : list)
@@ -23,8 +23,8 @@ public class NGPInterpolator implements IInterpolator {
 		}
 	}
 
-	public void interpolateParticlesToCurrentDensities(ParticleList particleList, Grid grid, double dt) {
-		List<Particle> list = particleList.list;
+	public void interpolateParticlesToCurrentDensities(ParticleManager particleManager, Grid grid, double dt) {
+		List<Particle> list = particleManager.listOfParticles;
 		grid.clearCurrentDensity();
 
 		for(Particle p : list)
@@ -40,8 +40,8 @@ public class NGPInterpolator implements IInterpolator {
         }
     }
 
-	public void interpolateFieldsToParticles(ParticleList particleList, Grid grid) {
-		List<Particle> list = particleList.list;
+	public void interpolateFieldsToParticles(ParticleManager particleManager, Grid grid) {
+		List<Particle> list = particleManager.listOfParticles;
 
 		for(Particle p : list)
 		{

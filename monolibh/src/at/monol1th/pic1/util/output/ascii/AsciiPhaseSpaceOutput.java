@@ -48,7 +48,7 @@ public class AsciiPhaseSpaceOutput
 			Draw phase space distribution.
 		 */
         if (drawPhaseSpace) {
-            for (Particle p : s.particleList.list) {
+            for (Particle p : s.particleManager.listOfParticles) {
                 double px = p.x / size * nx;
                 double pv = (p.vx / c + 1.0) * ny / 2.0;
 

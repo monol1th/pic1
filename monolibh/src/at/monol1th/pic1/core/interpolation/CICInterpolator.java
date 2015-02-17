@@ -3,16 +3,16 @@ package at.monol1th.pic1.core.interpolation;
 import at.monol1th.pic1.core.grid.Cell;
 import at.monol1th.pic1.core.grid.Grid;
 import at.monol1th.pic1.core.particles.Particle;
-import at.monol1th.pic1.core.particles.ParticleList;
+import at.monol1th.pic1.core.particles.ParticleManager;
 
 /**
  * Created by David on 14.02.2015.
  */
 public class CICInterpolator implements IInterpolator {
-	public void interpolateParticlesToChargeDensity(ParticleList particleList, Grid g)
+	public void interpolateParticlesToChargeDensity(ParticleManager particleManager, Grid g)
 	{
 		g.clearChargeDensity();
-		for(Particle p : particleList.list)
+		for(Particle p : particleManager.listOfParticles)
 		{
 			int ix = (int) (p.x / g.dx);
 			double wx = p.x / g.dx - ix;
@@ -22,10 +22,10 @@ public class CICInterpolator implements IInterpolator {
 		}
 	}
 
-	public void interpolateParticlesToCurrentDensities(ParticleList particleList, Grid g, double dt)
+	public void interpolateParticlesToCurrentDensities(ParticleManager particleManager, Grid g, double dt)
 	{
 		g.clearCurrentDensity();
-		for(Particle p : particleList.list)
+		for(Particle p : particleManager.listOfParticles)
 		{
             double x1 = p.x;
             double x0 = p.x - dt * p.vx;
@@ -52,14 +52,12 @@ public class CICInterpolator implements IInterpolator {
         cell.jx += (x1 - x0) * q / (dx * dt);
     }
 
-	public void interpolateFieldsToParticles(ParticleList particleList, Grid g)
+	public void interpolateFieldsToParticles(ParticleManager particleManager, Grid g)
 	{
-		for(Particle p : particleList.list)
+		for(Particle p : particleManager.listOfParticles)
 		{
 			int ix = (int) (p.x / g.dx + 0.5);
 			double wx = p.x/g.dx - ix;
-
-
             double ExL = g.getCell(ix-1).Ex;
             double ExR = g.getCell(ix).Ex;
             p.Ex = ExL * (0.5 - wx) + ExR * (0.5 + wx);

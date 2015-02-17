@@ -7,17 +7,20 @@ import at.monol1th.pic1.core.grid.updater.IFieldUpdater;
 import at.monol1th.pic1.core.grid.updater.LeapFrogFieldUpdater;
 import at.monol1th.pic1.core.interpolation.CICInterpolator;
 import at.monol1th.pic1.core.interpolation.IInterpolator;
-import at.monol1th.pic1.core.particles.ParticleList;
+import at.monol1th.pic1.core.particles.ParticleManager;
 import at.monol1th.pic1.core.particles.movement.PeriodicBoundaryConditions;
 import at.monol1th.pic1.core.particles.movement.RelativisticLeapFrogMover;
+import at.monol1th.pic1.core.settings.Settings;
 
 /**
  * Created by David on 14.02.2015.
  */
 public class Simulation {
 
+	public Settings settings;
+
 	public Grid grid;
-	public ParticleList particleList;
+	public ParticleManager particleManager;
 	public IFieldUpdater fieldUpdater;
 	public IFieldSolver fieldSolver;
 	public IInterpolator interpolator;
@@ -27,33 +30,43 @@ public class Simulation {
 	public double dt;
 	public double speedOfLight;
 
-	public Simulation(int isizex, double dx, double dt, double c)
+	public int computationalSteps;
+
+	public Simulation(Settings settings)
 	{
-		this.isizex = isizex;
-		this.dx = dx;
-		this.dt = dt;
-		this.speedOfLight = c;
+		this.settings = settings;
+
+		this.isizex = settings.gridSize;
+		this.dx = settings.gridSpacing;
+		this.dt = settings.timeStep;
+		this.speedOfLight = settings.speedOfLight;
 
 		grid = new Grid(isizex, dx);
-		particleList = new ParticleList(new RelativisticLeapFrogMover(), new PeriodicBoundaryConditions(), dt, c, isizex * dx);
-		interpolator = new CICInterpolator();
-		fieldUpdater = new LeapFrogFieldUpdater();
-		fieldSolver  = new Poisson1DFieldSolver();
+		particleManager = new ParticleManager(settings);
+		particleManager.addParticles(settings.listOfParticles);
+		interpolator = settings.interpolationMethod;
+		fieldUpdater = settings.fieldUpdater;
+		fieldSolver  = settings.fieldSolver;
 	}
 
 	public void initialize()
 	{
-		interpolator.interpolateParticlesToChargeDensity(particleList, grid);
-		fieldSolver.solveFields(grid, particleList);
-		interpolator.interpolateFieldsToParticles(particleList, grid);
-		particleList.initializeParticles();
+		computationalSteps = 0;
+
+		interpolator.interpolateParticlesToChargeDensity(particleManager, grid);
+		fieldSolver.solveFields(grid, particleManager);
+		interpolator.interpolateFieldsToParticles(particleManager, grid);
+		particleManager.initializeParticles();
 	}
 
 	public void update()
 	{
-		interpolator.interpolateFieldsToParticles(particleList, grid);
-		particleList.updateParticles();
-		interpolator.interpolateParticlesToCurrentDensities(particleList, grid, dt);
+		computationalSteps++;
+
+		interpolator.interpolateFieldsToParticles(particleManager, grid);
+		particleManager.updateParticles();
+		interpolator.interpolateParticlesToChargeDensity(particleManager, grid);
+		interpolator.interpolateParticlesToCurrentDensities(particleManager, grid, dt);
 		fieldUpdater.updateFields(grid, dt);
 	}
 }

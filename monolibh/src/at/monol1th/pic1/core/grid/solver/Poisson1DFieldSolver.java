@@ -1,14 +1,14 @@
 package at.monol1th.pic1.core.grid.solver;
 
 import at.monol1th.pic1.core.grid.Grid;
-import at.monol1th.pic1.core.particles.ParticleList;
+import at.monol1th.pic1.core.particles.ParticleManager;
 import edu.emory.mathcs.jtransforms.fft.DoubleFFT_1D;
 
 /**
  * Created by David on 15.02.2015.
  */
 public class Poisson1DFieldSolver implements IFieldSolver {
-	public void solveFields(Grid g, ParticleList pL)
+	public void solveFields(Grid g, ParticleManager pL)
 	{
 		DoubleFFT_1D fft = new DoubleFFT_1D(g.isizex);
 		/*
