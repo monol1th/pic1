@@ -32,12 +32,12 @@ public class App extends JFrame {
 		app.setResizable(true);
 
 		int targetFPS = 60;
-		int computationalStepsPerFrame = 1;
-		long optimalTime = 1000000000 / targetFPS;
-		int n = (int) Math.pow(2, 8);
-		double dx = 0.08;   /*  was 0.04    */
-		double dt = 0.001;
-		double c = dx / dt * 0.5;
+        int computationalStepsPerFrame = 1000;
+        long optimalTime = 1000000000 / targetFPS;
+        int n = (int) Math.pow(2, 4);
+        double dx = 0.08;   /*  was 0.04    */
+        double dt = 0.002;
+        double c = dx / dt * 0.5;
 		double size = dx * n;
 
 		Simulation sim = new Simulation(n, dx, dt, c);
@@ -46,14 +46,14 @@ public class App extends JFrame {
 		 */
 
 
-		int particleNumber = (int) Math.pow(2, 13);
+        int particleNumber = (int) Math.pow(2, 12);
 
-		double initialMomentumParameter = 0.5;
+        double initialMomentumParameter = 0.45;
 
 		int perturbationNodes = 4;  //  was 3
-		double perturbationAmplitude = 0.1;
-
-		for (int i = 0; i < particleNumber; i++) {
+        double perturbationAmplitude = 0.0;
+        /*
+        for (int i = 0; i < particleNumber; i++) {
 			double d = 2.0 * ((i % 2) - 0.5);
 
 			Particle p = new Particle();
@@ -61,6 +61,7 @@ public class App extends JFrame {
 
 			p.x = w * n * dx;
 			//p.x *= 1.0 + d *perturbationAmplitude * Math.sin(perturbationNodes*w*2.0*Math.PI);
+            //p.x = n * dx * Math.random();
 
 			p.px = initialMomentumParameter * d * c;
 			p.px *= 1.0 + perturbationAmplitude * Math.sin(perturbationNodes * w * 2.0 * Math.PI);
@@ -70,42 +71,43 @@ public class App extends JFrame {
 
 			sim.particleList.addParticle(p);
 		}
-
+        */
 
 		/*
 			Two-particle test
 		 */
-        /*
+
 		Particle p1 = new Particle();
-		p1.x = n * dx * 0.3123;
-		p1.px = 0.5;
-		p1.m = 1.0;
+        p1.x = n * dx * 0.3;
+        p1.px = 0.2;
+        p1.m = 1.0;
 		p1.q = 1.0;
 
 		Particle p2 = new Particle();
-		p2.x = n*dx * 0.69;
-		p2.px = 0.5;
-		p2.m = 1.0;
+        p2.x = n * dx * 0.7;
+        p2.px = -0.2;
+        p2.m = 1.0;
 		p2.q = -1.0;
 
 		sim.particleList.addParticle(p1);
 		sim.particleList.addParticle(p2);
-        */
+
 
 		sim.initialize();
 
 		AsciiPhaseSpaceOutput asciiPSOutput = new AsciiPhaseSpaceOutput(sim, NX, NY);
-		asciiPSOutput.drawElectricField = true;
+        asciiPSOutput.drawPhaseSpace = true;
+        asciiPSOutput.drawElectricField = true;
+        asciiPSOutput.drawChargeDensity = false;
 
 		while (true) {
 			long startTime = System.nanoTime();
 
 			//  Create output.
-			app.terminal.repaint();
 			//app.terminal.clear();
 
-			app.terminal.write("One dimensional electromagnetic particle-in-cell simulation by monol1th (c) 2015.", 1, 1);
-			String line = String.format("Setup: Two-stream instability with  grid size N = %d, and particle number pN = %d.", n, particleNumber);
+            app.terminal.write("One dimensional electrostatic particle-in-cell simulation by monol1th (c) 2015.", 1, 1);
+            String line = String.format("Setup: Two-stream instability with  grid size N = %d, and particle number pN = %d.", n, particleNumber);
 
 			app.terminal.write(line, 1, 2);
 
@@ -132,7 +134,9 @@ public class App extends JFrame {
 				app.terminal.write((char) 0, NX-1, 0);
 
 			try {
-				TimeUnit.NANOSECONDS.sleep(diff);
+
+                app.terminal.repaint();
+                TimeUnit.NANOSECONDS.sleep(diff);
 			} catch (InterruptedException e) {
 			}
 		}
