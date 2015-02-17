@@ -35,20 +35,19 @@ public class CICInterpolator implements IInterpolator {
 			if(ix0 == ix1)
 			{
 				/*  One-cell move   */
-                oneCellMove(g.getCell(ix1), x1, x0, p.q, dt, g.dx);
-			}
- 			else
+                applyOneCellMoveInterpolation(g.getCell(ix1), x1, x0, p.q, dt, g.dx);
+            } else
 			{
 				/*  Two-cell move   */
                 int middleCellPosition = Math.max(ix1, ix0);
-                oneCellMove(g.getCell(ix0), middleCellPosition * g.dx, x0, p.q, dt, g.dx);
-                oneCellMove(g.getCell(ix1), x1, middleCellPosition * g.dx , p.q, dt, g.dx);
-			}
+                applyOneCellMoveInterpolation(g.getCell(ix0), middleCellPosition * g.dx, x0, p.q, dt, g.dx);
+                applyOneCellMoveInterpolation(g.getCell(ix1), x1, middleCellPosition * g.dx, p.q, dt, g.dx);
+            }
 
 		}
 	}
 
-    private void oneCellMove(Cell cell, double x1, double x0, double q, double dt, double dx)
+    private void applyOneCellMoveInterpolation(Cell cell, double x1, double x0, double q, double dt, double dx)
     {
         cell.jx += (x1 - x0) * q / (dx * dt);
     }
