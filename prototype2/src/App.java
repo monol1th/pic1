@@ -27,7 +27,7 @@ public class App extends JFrame {
 
 	public static void main(String[] args) {
 		App app = new App();
-		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		app.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		app.setVisible(true);
 		app.setResizable(true);
 
@@ -36,7 +36,7 @@ public class App extends JFrame {
 		long optimalTime = 1000000000 / targetFPS;
 		int n = (int) Math.pow(2, 8);
 		double dx = 0.08;   /*  was 0.04    */
-		double dt = 0.002;
+		double dt = 0.001;
 		double c = dx / dt * 0.5;
 		double size = dx * n;
 
