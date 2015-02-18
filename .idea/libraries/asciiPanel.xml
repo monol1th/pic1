@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="asciiPanel">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/asciiPanel.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="https://github.com/trystan/AsciiPanel" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/asciiPanel.jar!/" />
+    </SOURCES>
+  </library>
+</component>
