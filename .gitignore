@@ -13,3 +13,6 @@ out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
 .idea/codeStyleSettings.xml
 .idea/codeStyleSettings.xml
 .idea/workspace.xml
+*.jar
+.idea/workspace.xml
+*.class

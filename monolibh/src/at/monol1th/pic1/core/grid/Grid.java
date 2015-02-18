@@ -34,7 +34,7 @@ public class Grid
 
     public Cell getCell(double x)
     {
-        int ix = (int) (x / this.dx);
+        int ix = (int) Math.floor(x / this.dx);
         return getCell(ix);
     }
 

@@ -26,13 +26,14 @@ public class CICInterpolator implements IInterpolator
     public void interpolateParticlesToCurrentDensities(ParticleManager particleManager, Grid g, double dt)
     {
         g.clearCurrentDensity();
+
+
         for (Particle p : particleManager.listOfParticles)
         {
             double x1 = p.x;
             double x0 = p.x - dt * p.vx;
             int ix1 = (int) (x1 / g.dx);
-            int ix0 = (int) (x0 / g.dx);
-
+            int ix0 = (int) Math.floor(x0 / g.dx);
             if (ix0 == ix1)
             {
                 /*  One-cell move   */
