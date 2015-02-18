@@ -9,38 +9,7 @@
     <bookmark url="file://$PROJECT_DIR$/prototype1/src/Main.java" line="2" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4fdebee-3cbc-4dbe-8e9d-8eb94f502a89" name="Default" comment="Fixed the nearest-grid-point (NGP) interpolator. It should work correctly now. Using the NGPInterpolator I get good results in the two-particle test, better than CIC actually. There is some elusive bug in the CIC code..">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/util/display/AsciiDisplay.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/util/output/ascii/AsciiPlotter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/asciiPanel.xml" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\monolibh\src\at\monol1th\pic1\util\output\ascii\AsciiGridOutput.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\monolibh\src\at\monol1th\pic1\util\output\ascii\AsciiPhaseSpaceOutput.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\out\production\monolibh\at\monol1th\pic1\util\output\ascii\AsciiGridOutput.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\out\production\monolibh\at\monol1th\pic1\util\output\ascii\AsciiPhaseSpaceOutput.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\out\production\prototype2\App.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\out\production\prototype2\asciiPanel\AsciiCharacterData.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\out\production\prototype2\asciiPanel\AsciiPanel.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\out\production\prototype2\asciiPanel\TileTransformer.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\out\production\prototype2\asciiPanel\cp437.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\prototype2\src\asciiPanel\AsciiCharacterData.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\prototype2\src\asciiPanel\AsciiPanel.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\prototype2\src\asciiPanel\TileTransformer.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\David\Documents\Repos\pic1\prototype2\src\asciiPanel\cp437.png" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\David\Documents\Repos\pic1\prototype2\src\App.java" afterPath="$PROJECT_DIR$/prototype2/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/interpolation/CICInterpolator.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/interpolation/CICInterpolator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/Cell.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/Cell.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/Grid.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/Grid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/updater/LeapFrogFieldUpdater.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/updater/LeapFrogFieldUpdater.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/interpolation/NGPInterpolator.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/interpolation/NGPInterpolator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar" afterPath="$PROJECT_DIR$/out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/solver/Poisson1DFieldSolver.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/solver/Poisson1DFieldSolver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/particles/movement/RelativisticLeapFrogMover.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/particles/movement/RelativisticLeapFrogMover.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/Simulation.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/Simulation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/solver/Stupid1DFieldSolver.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/solver/Stupid1DFieldSolver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/observables/TotalCharge.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/observables/TotalCharge.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monolibh/monolibh.iml" afterPath="$PROJECT_DIR$/monolibh/monolibh.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="e4fdebee-3cbc-4dbe-8e9d-8eb94f502a89" name="Default" comment="Fixed the nearest-grid-point (NGP) interpolator. It should work correctly now. Using the NGPInterpolator I get good results in the two-particle test, better than CIC actually. There is some elusive bug in the CIC code.." />
     <list id="476566b2-e536-4904-a5cc-3fb1cb1a0c9c" name="Rejected commit: Default" comment="Fixed the nearest-grid-point (NGP) interpolator. It should work correctly now. Using the NGPInterpolator I get good results in the two-particle test, better than CIC actually. There is some elusive bug in the CIC code.." />
     <ignored path="Particle-in-cell.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,8 +37,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/prototype2/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5828092" vertical-offset="249" max-vertical-offset="2312">
-              <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+            <state vertical-scroll-proportion="-2.7777777" vertical-offset="1835" max-vertical-offset="2312">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1170,8 +1139,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/prototype2/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5828092" vertical-offset="249" max-vertical-offset="2312">
-          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+        <state vertical-scroll-proportion="-2.7777777" vertical-offset="1835" max-vertical-offset="2312">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>

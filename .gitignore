@@ -9,3 +9,4 @@ out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
 *.class
 out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
 *.class
+.idea/workspace.xml
