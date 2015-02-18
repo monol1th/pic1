@@ -7,3 +7,5 @@ out/production/monolibh/at/monol1th/pic1/core/interpolation/CICInterpolator.clas
 out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
 *.jar
 *.class
+out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
+*.class
