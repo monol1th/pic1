@@ -2,6 +2,7 @@ package at.monol1th.pic1.examples;
 
 import at.monol1th.pic1.core.grid.solver.Poisson1DFieldSolver;
 import at.monol1th.pic1.core.grid.updater.LeapFrogFieldUpdater;
+import at.monol1th.pic1.core.interpolation.CICInterpolator;
 import at.monol1th.pic1.core.interpolation.NGPInterpolator;
 import at.monol1th.pic1.core.particles.Particle;
 import at.monol1th.pic1.core.particles.movement.PeriodicBoundaryConditions;
@@ -27,7 +28,7 @@ public class SingleStreamSettings extends Settings
 
         this.particleMover                 = new RelativisticLeapFrogMover();
         this.particleBoundaryConditions    = new PeriodicBoundaryConditions();
-        this.interpolationMethod           = new NGPInterpolator();
+        this.interpolationMethod           = new CICInterpolator();
         this.fieldSolver                   = new Poisson1DFieldSolver();
         this.fieldUpdater                  = new LeapFrogFieldUpdater();
 

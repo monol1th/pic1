@@ -26,7 +26,7 @@ public class FourParticleSettings extends Settings
 
         this.particleMover                 = new RelativisticLeapFrogMover();
         this.particleBoundaryConditions    = new PeriodicBoundaryConditions();
-        this.interpolationMethod           = new NGPInterpolator();
+        this.interpolationMethod           = new CICInterpolator();
         this.fieldSolver                   = new Poisson1DFieldSolver();
         this.fieldUpdater                  = new LeapFrogFieldUpdater();
 
