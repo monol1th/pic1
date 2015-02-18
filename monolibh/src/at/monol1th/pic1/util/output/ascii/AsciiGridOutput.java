@@ -8,52 +8,52 @@ import at.monol1th.pic1.core.particles.Particle;
  */
 public class AsciiGridOutput
 {
-	private Simulation s;
-	private int isizex;
-	private double dx;
-	private char[] output1;
-	private char[] output2;
-	private static double E_ACCURACY = 0.001;
+    private static double E_ACCURACY = 0.001;
+    private Simulation s;
+    private int isizex;
+    private double dx;
+    private char[] output1;
+    private char[] output2;
 
-	public AsciiGridOutput(Simulation s)
-	{
-		this.s = s;
-		this.isizex = s.isizex;
-		this.dx = s.dx;
-		this.output1 = new char[this.isizex];
-		this.output2 = new char[this.isizex];
-		for(int i = 0; i < this.isizex; i++)
-		{
-			output1[i] = '_';
-			output2[i] = '_';
-		}
-	}
+    public AsciiGridOutput(Simulation s)
+    {
+        this.s = s;
+        this.isizex = s.isizex;
+        this.dx = s.dx;
+        this.output1 = new char[this.isizex];
+        this.output2 = new char[this.isizex];
+        for (int i = 0; i < this.isizex; i++)
+        {
+            output1[i] = '_';
+            output2[i] = '_';
+        }
+    }
 
-	public void drawCurrentState()
-	{
-		/*
+    public void drawCurrentState()
+    {
+        /*
 			Draw electric field.
 		 */
-		for(int i = 0; i < this.isizex; i++)
-		{
-			output1[i] = ' ';
-			if(s.grid.getCell(i).Ex >  E_ACCURACY)   output1[i] = '+';
-			if(s.grid.getCell(i).Ex < -E_ACCURACY)   output1[i] = '-';
-		}
+        for (int i = 0; i < this.isizex; i++)
+        {
+            output1[i] = ' ';
+            if (s.grid.getCell(i).Ex > E_ACCURACY) output1[i] = '+';
+            if (s.grid.getCell(i).Ex < -E_ACCURACY) output1[i] = '-';
+        }
 
 		/*
 			Draw particles.
 		 */
-		for(Particle p : s.particleManager.listOfParticles)
-		{
-			int ix = (int) (p.x / this.dx);
-			if(p.q > 0)     output1[ix] = 'X';
-			if(p.q < 0)     output1[ix] = 'O';
-		}
-	}
+        for (Particle p : s.particleManager.listOfParticles)
+        {
+            int ix = (int) (p.x / this.dx);
+            if (p.q > 0) output1[ix] = 'X';
+            if (p.q < 0) output1[ix] = 'O';
+        }
+    }
 
-	public char[] getOutput()
-	{
-		return output1;
-	}
+    public char[] getOutput()
+    {
+        return output1;
+    }
 }

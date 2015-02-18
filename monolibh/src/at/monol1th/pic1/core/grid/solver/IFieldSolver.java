@@ -6,6 +6,7 @@ import at.monol1th.pic1.core.particles.ParticleManager;
 /**
  * Created by David on 14.02.2015.
  */
-public interface IFieldSolver {
-	public void solveFields(Grid g, ParticleManager pL);
+public interface IFieldSolver
+{
+    public void solveFields(Grid g, ParticleManager pL);
 }

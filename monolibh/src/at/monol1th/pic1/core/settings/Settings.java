@@ -14,40 +14,40 @@ import java.util.List;
  */
 public class Settings
 {
-	/*
+    /*
 			Simulation parameters
 	 */
 
-	public int                          gridSize;
-	public double                       gridSpacing;
-	public double                       timeStep;
-	public double                       speedOfLight;
+    public int gridSize;
+    public double gridSpacing;
+    public double timeStep;
+    public double speedOfLight;
 
 	/*
 			Interpolation method
 	 */
 
-	public IInterpolator                interpolationMethod;
+    public IInterpolator interpolationMethod;
 
 	/*
 			Particle mover & particle boundary conditions
 	 */
 
-	public IParticleMover               particleMover;
-	public IParticleBoundaryConditions  particleBoundaryConditions;
+    public IParticleMover particleMover;
+    public IParticleBoundaryConditions particleBoundaryConditions;
 
 	/*
 			Field solver & updater
 	 */
 
-	public IFieldSolver                 fieldSolver;
-	public IFieldUpdater                fieldUpdater;
+    public IFieldSolver fieldSolver;
+    public IFieldUpdater fieldUpdater;
 
 	/*
 			List of particles
 	 */
 
-	public List<Particle>               listOfParticles;
+    public List<Particle> listOfParticles;
 
 
 }
