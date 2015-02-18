@@ -27,6 +27,7 @@ public class Simulation
     public double speedOfLight;
 
     public int computationalSteps;
+    public double elapsedTime;
 
     public Simulation(Settings settings)
     {
@@ -58,6 +59,7 @@ public class Simulation
     public void update()
     {
         computationalSteps++;
+        elapsedTime = computationalSteps * dt;
 
         interpolator.interpolateFieldsToParticles(particleManager, grid);
         particleManager.updateParticles();

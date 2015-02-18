@@ -37,7 +37,8 @@ public class CICInterpolator implements IInterpolator
             {
                 /*  One-cell move   */
                 applyOneCellMoveInterpolation(g.getCell(ix1), x1, x0, p.q, dt, g.dx);
-            } else
+            }
+            else
             {
 				/*  Two-cell move   */
                 int middleCellPosition = Math.max(ix1, ix0);

@@ -21,14 +21,17 @@ public class AsciiDisplay extends JFrame
 
     private final int topSpace = 2;
 
-    private final Color phaseSpaceColor = new Color(200, 234, 255);
+    private final Color phaseSpaceColor    = new Color(200, 234, 255);
     private final Color electricFieldColor = new Color(150, 79, 58);
     private final Color chargeDensityColor = new Color(42, 45, 170);
+    private final Color currentDensityColor = new Color(76, 170, 74);
+    private final Color textColor          = new Color(255, 218, 139);
 
 
     public boolean drawPhaseSpace = true;
     public boolean drawElectricField = true;
-    public boolean drawChargeDensity = false;
+    public boolean drawChargeDensity = true;
+    public boolean drawCurrentDensity = true;
 
     public AsciiDisplay(int nx, int ny, Simulation s)
     {
@@ -62,6 +65,7 @@ public class AsciiDisplay extends JFrame
         if(drawPhaseSpace)      writeCharacterArray(plotter.getPhaseSpaceOutput(), phaseSpaceColor, true);
         if(drawElectricField)   writeCharacterArray(plotter.getElectricFieldOutput(), electricFieldColor, false);
         if(drawChargeDensity)   writeCharacterArray(plotter.getChargeDensityOutput(), chargeDensityColor, false);
+        if(drawCurrentDensity)   writeCharacterArray(plotter.getCurrentDensityOutput(), currentDensityColor, false);
     }
 
     private void writeCharacterArray(char[][] characterArray, Color color, boolean drawEmptyCharacters)
@@ -72,6 +76,11 @@ public class AsciiDisplay extends JFrame
                     terminal.write(characterArray[y][x], x, y+topSpace, color);
             }
         }
+    }
+
+    public void writeStatusLine(String line, int x, int y)
+    {
+        terminal.write(line, x, y, textColor);
     }
 
     public void repaint()
