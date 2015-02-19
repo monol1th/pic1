@@ -9,16 +9,9 @@
     <bookmark url="file://$PROJECT_DIR$/prototype1/src/Main.java" line="2" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4fdebee-3cbc-4dbe-8e9d-8eb94f502a89" name="Default" comment="Fixed the nearest-grid-point (NGP) interpolator. It should work correctly now. Using the NGPInterpolator I get good results in the two-particle test, better than CIC actually. There is some elusive bug in the CIC code..">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/core/observables/Energy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/benchmarks/TwoParticleCenterOfMassTest.java" />
+    <list default="true" id="e4fdebee-3cbc-4dbe-8e9d-8eb94f502a89" name="Default" comment="Fixed the Poisson solver .. unphysical electric field is now correctly subtracted.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar" afterPath="$PROJECT_DIR$/out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/solver/Poisson1DFieldSolver.class" afterPath="$PROJECT_DIR$/out/production/monolibh/at/monol1th/pic1/core/grid/solver/Poisson1DFieldSolver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prototype2/src/Main.java" afterPath="$PROJECT_DIR$/prototype2/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/core/grid/solver/Poisson1DFieldSolver.java" afterPath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/core/grid/solver/Poisson1DFieldSolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoParticleSettings.java" afterPath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoParticleSettings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoStreamSettings.java" afterPath="$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoStreamSettings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="476566b2-e536-4904-a5cc-3fb1cb1a0c9c" name="Rejected commit: Default" comment="Fixed the nearest-grid-point (NGP) interpolator. It should work correctly now. Using the NGPInterpolator I get good results in the two-particle test, better than CIC actually. There is some elusive bug in the CIC code.." />
@@ -48,8 +41,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prototype2/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1638">
-              <caret line="76" column="62" selection-start-line="76" selection-start-column="62" selection-end-line="76" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1602">
+              <caret line="67" column="63" selection-start-line="67" selection-start-column="63" selection-end-line="67" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
@@ -60,12 +53,12 @@
       <file leaf-file-name="TwoParticleCenterOfMassTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/benchmarks/TwoParticleCenterOfMassTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42043796" vertical-offset="270" max-vertical-offset="2016">
-              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.6569343" vertical-offset="216" max-vertical-offset="1818">
+              <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3350#3351#0" expanded="true" />
-                <element signature="e#3382#3383#0" expanded="true" />
+                <element signature="e#3169#3170#0" expanded="true" />
+                <element signature="e#3201#3202#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +81,8 @@
       <file leaf-file-name="TwoParticleSettings.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoParticleSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="1026">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="47" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="219" max-vertical-offset="1008">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="46" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -110,8 +103,8 @@
       <file leaf-file-name="Energy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/core/observables/Energy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1026">
-              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="215" max-vertical-offset="882">
+              <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -120,7 +113,7 @@
       <file leaf-file-name="Poisson1DFieldSolver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/core/grid/solver/Poisson1DFieldSolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="845" max-vertical-offset="1530">
+            <state vertical-scroll-proportion="0.0" vertical-offset="845" max-vertical-offset="1512">
               <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="false" />
@@ -144,8 +137,8 @@
       <file leaf-file-name="TwoStreamSettings.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoStreamSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="1260">
-              <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1224">
+              <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -707,7 +700,13 @@
       <option name="project" value="LOCAL" />
       <updated>1424183829785</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed the Poisson solver .. unphysical electric field is now correctly subtracted.">
+      <created>1424362552332</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1424362552332</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -762,7 +761,8 @@
     <MESSAGE value="Fixed the nearest-grid-point (NGP) interpolator. It should work correctly now. Using the NGPInterpolator I get good results in the two-particle test, better than CIC actually. There is some elusive bug in the CIC code.." />
     <MESSAGE value="Small name change in CICInterpolator." />
     <MESSAGE value="Added some options to the ascii phase space output. It can now render the phase space density, the electric field and the charge density." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some options to the ascii phase space output. It can now render the phase space density, the electric field and the charge density." />
+    <MESSAGE value="Fixed the Poisson solver .. unphysical electric field is now correctly subtracted." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the Poisson solver .. unphysical electric field is now correctly subtracted." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1124,8 +1124,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/core/observables/Energy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1026">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="215" max-vertical-offset="882">
+          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1164,8 +1164,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/prototype2/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1638">
-          <caret line="76" column="62" selection-start-line="76" selection-start-column="62" selection-end-line="76" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1602">
+          <caret line="67" column="63" selection-start-line="67" selection-start-column="63" selection-end-line="67" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
@@ -1174,28 +1174,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoParticleSettings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="1026">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="47" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="219" max-vertical-offset="1008">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="46" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/examples/TwoStreamSettings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="1260">
-          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1224">
+          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monolibh/src/at/monol1th/pic1/benchmarks/TwoParticleCenterOfMassTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42043796" vertical-offset="270" max-vertical-offset="2016">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.6569343" vertical-offset="216" max-vertical-offset="1818">
+          <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3350#3351#0" expanded="true" />
-            <element signature="e#3382#3383#0" expanded="true" />
+            <element signature="e#3169#3170#0" expanded="true" />
+            <element signature="e#3201#3202#0" expanded="true" />
           </folding>
         </state>
       </provider>
