@@ -10,3 +10,12 @@ out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
 out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
 *.class
 .idea/workspace.xml
+.idea/codeStyleSettings.xml
+.idea/codeStyleSettings.xml
+.idea/workspace.xml
+*.jar
+.idea/workspace.xml
+*.class
+out/artifacts/Particle_in_cell_jar/Particle-in-cell.jar
+out/production/monolibh/at/monol1th/pic1/core/grid/Grid.class
+out/production/monolibh/at/monol1th/pic1/core/interpolation/CICInterpolator.class

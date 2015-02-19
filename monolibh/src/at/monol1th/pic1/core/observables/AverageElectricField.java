@@ -15,7 +15,7 @@ public class AverageElectricField
         this.g = g;
     }
 
-    public double compute()
+    public double computeAverageElectricField()
     {
         double Eavg = 0.0;
         for (Cell cell : g.cells)

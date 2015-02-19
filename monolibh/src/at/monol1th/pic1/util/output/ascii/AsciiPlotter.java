@@ -93,7 +93,7 @@ public class AsciiPlotter
          */
 
 
-        double maxElectricField = 0.0;
+        double maxElectricField =  Math.pow(10, -17);
         for (int ix = 0; ix < s.settings.gridSize; ix++)
             if (maxElectricField < Math.abs(s.grid.getCell(ix).Ex))
                 maxElectricField = Math.abs(s.grid.getCell(ix).Ex);
@@ -109,7 +109,45 @@ public class AsciiPlotter
             double y = 0.5 * (scaledEx * 0.5 + 1.0) * (ny - 1);
 
             y = Math.max(0.0, Math.min(ny-1, y));
-            output[(int) y][x] = 'X';
+            output[(int) y][x] = 219;
+        }
+
+        return output;
+    }
+
+    public char[][] getCurrentDensityOutput()
+    {
+        char[][] output = new char[ny][nx];
+
+        /*
+            Initialize output character array.
+         */
+        for (int x = 0; x < nx; x++)
+            for (int y = 0; y < ny; y++)
+                output[y][x] = 0;
+
+        /*
+            Find maximal current density.
+         */
+
+
+        double maxCurrent =  Math.pow(10, -17);
+        for (int ix = 0; ix < s.settings.gridSize; ix++)
+            if (maxCurrent < Math.abs(s.grid.getCell(ix).jx))
+                maxCurrent = Math.abs(s.grid.getCell(ix).jx);
+
+        /*
+            Draw current density to output character array.
+         */
+
+        for (int x = 0; x < nx; x++)
+        {
+            int    ix = (int) (x / (double) nx * s.settings.gridSize);
+            double scaledJx = s.grid.getCell(ix).jx / maxCurrent;
+            double y = 0.5 * (scaledJx * 0.5 + 1.0) * (ny - 1);
+
+            y = Math.max(0.0, Math.min(ny-1, y));
+            output[(int) y][x] = 219;
         }
 
         return output;
@@ -132,7 +170,7 @@ public class AsciiPlotter
          */
 
 
-        double maxDensity = 0.0;
+        double maxDensity =  Math.pow(10, -17);
         for (int ix = 0; ix < s.settings.gridSize; ix++)
             if (maxDensity < Math.abs(s.grid.getCell(ix).d))
                 maxDensity = Math.abs(s.grid.getCell(ix).d);
@@ -141,15 +179,17 @@ public class AsciiPlotter
             Draw electric field to output character array.
          */
 
-        /*
-        for (int x = 0; x < s.settings.gridSize; x++)
+
+        for (int x = 0; x < nx; x++)
         {
             int    ix = (int) (x / (double) nx * s.settings.gridSize);
-            double density = s.grid.getCell(ix).d;
-            double scaledDensity = 0.5 * (density / maxDensity) * ny + ny / 2;
-            output[(int) scaledDensity][x] = 'O';
+            double scaledDensity = s.grid.getCell(ix).d / maxDensity;
+            double y = 0.5 * (scaledDensity * 0.25 + 1.0) * (ny - 1);
+
+            y = Math.max(0.0, Math.min(ny-1, y));
+            output[(int) y][x] = 219;
         }
-        */
+
 
         return output;
 
