@@ -62,16 +62,18 @@ public class Poisson1DFieldSolver implements IFieldSolver
         }
 
 		/*
-			Quick & Dirty (TM): Far-field fixing.
-			Assumptions: All charges sit more or less in the center of the simulation box.
-			What it does: Subtract the far-field to reproduce the (more or less) correct field
-			in the unbounded case.
+            Subtract unphysical constant field due to periodic boundary conditions.
 		 */
 
-        double Ex_far = g.getCell(0).Ex;
+        double Ec = 0.0;
         for (int i = 0; i < g.isizex; i++)
         {
-            //g.getCell(i).Ex -= Ex_far;
+            Ec += g.getCell(i).d * i;
+        }
+        Ec *= g.dx / g.isizex;
+
+        for (int i = 0; i < g.isizex; i++) {
+            g.getCell(i).Ex -= Ec;
         }
 
     }

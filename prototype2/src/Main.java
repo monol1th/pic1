@@ -1,20 +1,11 @@
 import at.monol1th.pic1.core.Simulation;
-import at.monol1th.pic1.core.grid.solver.Poisson1DFieldSolver;
-import at.monol1th.pic1.core.grid.updater.LeapFrogFieldUpdater;
-import at.monol1th.pic1.core.interpolation.CICInterpolator;
 import at.monol1th.pic1.core.interpolation.NGPInterpolator;
 import at.monol1th.pic1.core.observables.CenterOfMass;
 import at.monol1th.pic1.core.observables.TotalCurrent;
-import at.monol1th.pic1.core.particles.Particle;
-import at.monol1th.pic1.core.particles.movement.PeriodicBoundaryConditions;
-import at.monol1th.pic1.core.particles.movement.RelativisticLeapFrogMover;
 import at.monol1th.pic1.core.settings.Settings;
-import at.monol1th.pic1.examples.*;
+import at.monol1th.pic1.examples.TwoParticleSettings;
 import at.monol1th.pic1.util.display.AsciiDisplay;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -29,8 +20,11 @@ public class Main
                 Simulation initialization
          */
 
-		Simulation sim = new Simulation(new TwoParticleSettings());
-		sim.initialize();
+        Settings settings = new TwoParticleSettings();
+        settings.interpolationMethod = new NGPInterpolator();
+        settings.timeStep = 0.04;
+        Simulation sim = new Simulation(settings);
+        sim.initialize();
 
 
         /*
@@ -38,7 +32,7 @@ public class Main
          */
 
         int targetFPS = 60;
-        int computationalStepsPerFrame = 2000;
+        int computationalStepsPerFrame = 15000;
         long optimalTime = 1000000000 / targetFPS;
 
         AsciiDisplay display = new AsciiDisplay(128, 40, sim);
@@ -60,14 +54,18 @@ public class Main
             for (int t = 0; t < computationalStepsPerFrame; t++)
             {
                 sim.update();
+
                 if(Math.abs((centerOfMass.computeCenterOfMass() - com0)/com0) > relativeAccuracy)
                 {
                     System.out.println(String.format("Computational steps until failure: ti = %d", sim.computationalSteps));
                     System.out.println(String.format("Simulation time until failure: t = %f", sim.elapsedTime));
                     running = false;
+                    System.exit(0);
                     break;
+
                 }
-               // System.out.println(current.computeTotalCurrent());
+
+                // System.out.println(current.computeTotalCurrent());
             }
             display.update(true);
             display.writeStatusLine(String.format("N = %d; pN = %d; L = %.2f;",

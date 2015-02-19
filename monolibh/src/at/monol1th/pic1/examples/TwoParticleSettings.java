@@ -2,7 +2,6 @@ package at.monol1th.pic1.examples;
 
 import at.monol1th.pic1.core.grid.solver.Poisson1DFieldSolver;
 import at.monol1th.pic1.core.grid.updater.LeapFrogFieldUpdater;
-import at.monol1th.pic1.core.interpolation.CICInterpolator;
 import at.monol1th.pic1.core.interpolation.NGPInterpolator;
 import at.monol1th.pic1.core.particles.Particle;
 import at.monol1th.pic1.core.particles.movement.PeriodicBoundaryConditions;
@@ -21,8 +20,8 @@ public class TwoParticleSettings extends Settings
 
         this.gridSize          = (int) Math.pow(2, 8);
         this.gridSpacing       = 0.08;
-        this.timeStep          = 0.002;
-        this.speedOfLight      = this.gridSpacing / this.timeStep * 0.5;
+        this.timeStep = 0.02;
+        this.speedOfLight = 1.0;
 
         this.particleMover                 = new RelativisticLeapFrogMover();
         this.particleBoundaryConditions    = new PeriodicBoundaryConditions();
