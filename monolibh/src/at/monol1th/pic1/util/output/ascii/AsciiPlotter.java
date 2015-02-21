@@ -4,6 +4,8 @@ import at.monol1th.pic1.core.Simulation;
 import at.monol1th.pic1.core.particles.Particle;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.List;
+
 /**
  * Created by David on 15.02.2015.
  */
@@ -193,5 +195,38 @@ public class AsciiPlotter
 
         return output;
 
+    }
+
+    public char[][] getHighlightedParticlesOutput(List<Particle> list)
+    {
+        char[][]    output      = new char[ny][nx];
+
+        double simulationBoxLength  = s.settings.gridSize * s.settings.gridSpacing;
+        double c                    = s.speedOfLight;
+
+        /*
+            Initialize phase space density array and output character array.
+         */
+        for (int x = 0; x < nx; x++)
+        {
+            for (int y = 0; y < ny; y++)
+            {
+                output[y][x] = 0;
+            }
+        }
+        /*
+            Compute phase space density.
+         */
+
+        for (Particle p : list)
+        {
+            double px = p.x / simulationBoxLength * nx;
+            double pv = (p.vx / c + 1.0) * ny / 2.0;
+
+            output[(int) pv][(int) px] = 'X';
+        }
+
+
+        return output;
     }
 }

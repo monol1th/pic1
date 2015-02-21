@@ -1,4 +1,4 @@
-package at.monol1th.pic1.examples;
+package at.monol1th.pic1.core.settings.examples;
 
 import at.monol1th.pic1.core.grid.solver.Poisson1DFieldSolver;
 import at.monol1th.pic1.core.grid.updater.LeapFrogFieldUpdater;

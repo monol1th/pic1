@@ -65,6 +65,19 @@ public class Poisson1DFieldSolver implements IFieldSolver
             Subtract unphysical constant field due to periodic boundary conditions.
 		 */
 
+
+        //  Make sure total charge is zero.
+        double dc = 0.0;
+        for (int i = 0; i < g.isizex; i++)
+        {
+            dc += g.getCell(i).d;
+        }
+        dc /= (g.isizex);
+        for (int i = 0; i < g.isizex; i++) {
+            g.getCell(i).d -= dc;
+        }
+
+        //  Compute constant field from density.
         double Ec = 0.0;
         for (int i = 0; i < g.isizex; i++)
         {
@@ -75,6 +88,11 @@ public class Poisson1DFieldSolver implements IFieldSolver
         for (int i = 0; i < g.isizex; i++) {
             g.getCell(i).Ex -= Ec;
         }
+        for (int i = 0; i < g.isizex; i++) {
+            g.getCell(i).d += dc;
+        }
+
+
 
     }
 }

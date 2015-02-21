@@ -1,9 +1,10 @@
 import at.monol1th.pic1.core.Simulation;
+import at.monol1th.pic1.core.interpolation.CICInterpolator;
 import at.monol1th.pic1.core.interpolation.NGPInterpolator;
 import at.monol1th.pic1.core.observables.CenterOfMass;
 import at.monol1th.pic1.core.observables.TotalCurrent;
 import at.monol1th.pic1.core.settings.Settings;
-import at.monol1th.pic1.examples.TwoParticleSettings;
+import at.monol1th.pic1.core.settings.examples.*;
 import at.monol1th.pic1.util.display.AsciiDisplay;
 
 import java.util.concurrent.TimeUnit;
@@ -20,9 +21,8 @@ public class Main
                 Simulation initialization
          */
 
-        Settings settings = new TwoParticleSettings();
-        settings.interpolationMethod = new NGPInterpolator();
-        settings.timeStep = 0.04;
+        Settings settings = new TwoStreamSettings();
+        settings.interpolationMethod = new CICInterpolator();
         Simulation sim = new Simulation(settings);
         sim.initialize();
 
@@ -32,20 +32,22 @@ public class Main
          */
 
         int targetFPS = 60;
-        int computationalStepsPerFrame = 15000;
+        int computationalStepsPerFrame = 2;
         long optimalTime = 1000000000 / targetFPS;
 
-        AsciiDisplay display = new AsciiDisplay(128, 40, sim);
+        AsciiDisplay display = new AsciiDisplay(128, 32, sim);
         display.drawPhaseSpace = true;
-        display.drawElectricField = true;
+        display.drawElectricField = false;
         display.drawChargeDensity = false;
         display.drawCurrentDensity = false;
+        display.drawHighlightedParticles = true;
 
-        TotalCurrent current = new TotalCurrent(sim);
-        CenterOfMass centerOfMass = new CenterOfMass(sim);
-
-        double com0 = centerOfMass.computeCenterOfMass();
-        double relativeAccuracy = Math.pow(10, -5);
+        //  Add 10 random particles to highlight list.
+        for(int i = 0; i < 10; i++)
+        {
+            int j = (int) (Math.random() * sim.particleManager.numberOfParticles);
+            display.listOfHighlightedParticles.add(sim.particleManager.listOfParticles.get(j));
+        }
 
         boolean running = true;
 
@@ -54,16 +56,6 @@ public class Main
             for (int t = 0; t < computationalStepsPerFrame; t++)
             {
                 sim.update();
-
-                if(Math.abs((centerOfMass.computeCenterOfMass() - com0)/com0) > relativeAccuracy)
-                {
-                    System.out.println(String.format("Computational steps until failure: ti = %d", sim.computationalSteps));
-                    System.out.println(String.format("Simulation time until failure: t = %f", sim.elapsedTime));
-                    running = false;
-                    System.exit(0);
-                    break;
-
-                }
 
                 // System.out.println(current.computeTotalCurrent());
             }
@@ -82,7 +74,10 @@ public class Main
 
                 display.repaint();
                 TimeUnit.NANOSECONDS.sleep(diff);
-			} catch (InterruptedException e) {
+			}
+            catch (InterruptedException e)
+            {
+
 			}
 		}
 	}
