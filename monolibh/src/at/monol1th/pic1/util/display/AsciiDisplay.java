@@ -2,10 +2,12 @@ package at.monol1th.pic1.util.display;
 
 import asciiPanel.AsciiPanel;
 import at.monol1th.pic1.core.Simulation;
+import at.monol1th.pic1.core.particles.Particle;
 import at.monol1th.pic1.util.output.ascii.AsciiPlotter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by David on 18.02.2015.
@@ -18,6 +20,7 @@ public class AsciiDisplay extends JFrame
     private int NX;
     private int NY;
     private Simulation s;
+    public  ArrayList<Particle> listOfHighlightedParticles;
 
     private final int topSpace = 2;
 
@@ -25,6 +28,7 @@ public class AsciiDisplay extends JFrame
     private final Color electricFieldColor = new Color(150, 79, 58);
     private final Color chargeDensityColor = new Color(42, 45, 170);
     private final Color currentDensityColor = new Color(76, 170, 74);
+    private final Color highlightColor      = new Color(0, 245, 255);
     private final Color textColor          = new Color(255, 218, 139);
 
 
@@ -32,6 +36,7 @@ public class AsciiDisplay extends JFrame
     public boolean drawElectricField = true;
     public boolean drawChargeDensity = true;
     public boolean drawCurrentDensity = true;
+    public boolean drawHighlightedParticles = true;
 
     public AsciiDisplay(int nx, int ny, Simulation s)
     {
@@ -52,6 +57,8 @@ public class AsciiDisplay extends JFrame
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setResizable(true);
+
+        listOfHighlightedParticles = new ArrayList<>();
     }
 
     public void update()
@@ -66,6 +73,9 @@ public class AsciiDisplay extends JFrame
         if(drawElectricField)   writeCharacterArray(plotter.getElectricFieldOutput(), electricFieldColor, false);
         if(drawChargeDensity)   writeCharacterArray(plotter.getChargeDensityOutput(), chargeDensityColor, false);
         if(drawCurrentDensity)   writeCharacterArray(plotter.getCurrentDensityOutput(), currentDensityColor, false);
+        if(drawHighlightedParticles)    writeCharacterArray(
+                plotter.getHighlightedParticlesOutput(listOfHighlightedParticles),
+                highlightColor, false);
     }
 
     private void writeCharacterArray(char[][] characterArray, Color color, boolean drawEmptyCharacters)

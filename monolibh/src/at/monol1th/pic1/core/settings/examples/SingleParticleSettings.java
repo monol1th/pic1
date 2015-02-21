@@ -1,9 +1,8 @@
-package at.monol1th.pic1.examples;
+package at.monol1th.pic1.core.settings.examples;
 
 import at.monol1th.pic1.core.grid.solver.Poisson1DFieldSolver;
 import at.monol1th.pic1.core.grid.updater.LeapFrogFieldUpdater;
 import at.monol1th.pic1.core.interpolation.CICInterpolator;
-import at.monol1th.pic1.core.interpolation.NGPInterpolator;
 import at.monol1th.pic1.core.particles.Particle;
 import at.monol1th.pic1.core.particles.movement.PeriodicBoundaryConditions;
 import at.monol1th.pic1.core.particles.movement.RelativisticLeapFrogMover;

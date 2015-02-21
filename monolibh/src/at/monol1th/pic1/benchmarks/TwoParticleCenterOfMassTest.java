@@ -1,9 +1,11 @@
 package at.monol1th.pic1.benchmarks;
 
+import at.monol1th.pic1.core.Simulation;
 import at.monol1th.pic1.core.grid.solver.Poisson1DFieldSolver;
 import at.monol1th.pic1.core.grid.updater.LeapFrogFieldUpdater;
 import at.monol1th.pic1.core.interpolation.CICInterpolator;
 import at.monol1th.pic1.core.interpolation.NGPInterpolator;
+import at.monol1th.pic1.core.observables.CenterOfMass;
 import at.monol1th.pic1.core.particles.Particle;
 import at.monol1th.pic1.core.particles.movement.PeriodicBoundaryConditions;
 import at.monol1th.pic1.core.particles.movement.RelativisticLeapFrogMover;
@@ -20,25 +22,60 @@ public class TwoParticleCenterOfMassTest {
 
     }
 
-    public void runTests(ArrayList<Double> timeSteps,
+    public void runTests(double[] timeSteps,
                          int numberOfTestsPerTimeStep,
                          String interpolationType,
-                         int randomSeed) {
+                         int randomSeed)
+    {
+        System.out.println("Type\tdt\tsteps\ttime");
+        for(int i = 0; i < timeSteps.length; i++)
+        {
+            double relativeAccuracy = Math.pow(10, -5);
 
-
+            double dt = timeSteps[i];
+            for(int j = 0; j < numberOfTestsPerTimeStep; j++)
+            {
+                try
+                {
+                    Settings currentSetting = new InitialSettings(interpolationType, dt, randomSeed);
+                    Simulation currentSimulation = new Simulation(currentSetting);
+                    currentSimulation.initialize();
+                    CenterOfMass centerOfMass = new CenterOfMass(currentSimulation);
+                    double com0 = centerOfMass.computeCenterOfMass();
+                    boolean running = true;
+                    while (running)
+                    {
+                        currentSimulation.update();
+                        if(Math.abs((centerOfMass.computeCenterOfMass() - com0)/com0) > relativeAccuracy)
+                        {
+                            System.out.println(interpolationType + "\t"
+                                    + dt + "\t"
+                                    + currentSimulation.computationalSteps + "\t"
+                                    + currentSimulation.elapsedTime);
+                            running = false;
+                            break;
+                        }
+                    }
+                }
+                catch(SimulationParameterException ex)
+                {
+                    System.out.println(ex.toString());
+                }
+            }
+        }
     }
 
 
-    private class initialSettings extends Settings {
-        public initialSettings(String interpolationType, double timeStep, int randomSeed) throws SimulationParameterException {
-            this.gridSize = (int) Math.pow(2, 8);
+    private class InitialSettings extends Settings {
+        public InitialSettings(String interpolationType, double timeStep, int randomSeed) throws SimulationParameterException {
+            this.gridSize = (int) Math.pow(2, 10);
             this.gridSpacing = 0.08;
             this.timeStep = timeStep;
+            this.speedOfLight = 1.0;
 
-            if (timeStep * speedOfLight > 0.08)
+            if (timeStep * speedOfLight > this.gridSpacing)
                 throw new SimulationParameterException("Error: time step too high.");
 
-            this.speedOfLight = 1.0;
 
             this.particleMover = new RelativisticLeapFrogMover();
             this.particleBoundaryConditions = new PeriodicBoundaryConditions();
