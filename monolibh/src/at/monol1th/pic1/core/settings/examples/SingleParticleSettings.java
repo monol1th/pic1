@@ -19,8 +19,8 @@ public class SingleParticleSettings extends Settings
     {
 
         this.gridSize          = (int) Math.pow(2, 3);
-        this.gridSpacing       = 0.08;
-        this.timeStep          = 0.0001;
+        this.gridSpacing       = 0.8;
+        this.timeStep          = 0.01;
         this.speedOfLight      = this.gridSpacing / this.timeStep * 0.5;
 
         this.particleMover                 = new RelativisticLeapFrogMover();

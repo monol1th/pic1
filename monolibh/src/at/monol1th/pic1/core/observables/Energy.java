@@ -18,26 +18,24 @@ public class Energy {
         double energy = 0.0;
         double c = s.settings.speedOfLight;
         for (Particle p : s.particleManager.listOfParticles) {
-            energy += Math.sqrt(Math.pow(p.m * c * c, 2) + Math.pow(p.px * c, 2));
+            energy += Math.sqrt(Math.pow(p.m * c * c, 2) + Math.pow(p.px * c, 2)) - p.m * c * c;
         }
         return energy;
     }
 
     public double computeFieldEnergy() {
         double energy = 0.0;
-        double c = s.settings.speedOfLight;
         for (Cell cell : s.grid.cells) {
-            energy += Math.pow(cell.Ex, 2);
+            energy += Math.pow(cell.Ex, 2) * s.grid.dx;
         }
         return energy / 2.0;
     }
 
-    public double computeInteractionEnergy() {
-        double energy = 0.0;
-        double c = s.settings.speedOfLight;
-        for (Cell cell : s.grid.cells) {
-            energy += Math.pow(cell.rx, 2);
-        }
-        return energy / 2.0;
-    }
+	public double computeInteractionEnergy() {
+		double energy = 0.0;
+		for (Cell cell : s.grid.cells) {
+			energy += cell.jx * cell.Ex * s.grid.dx;
+		}
+		return energy;
+	}
 }
