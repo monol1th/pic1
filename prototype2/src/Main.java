@@ -2,7 +2,7 @@ import at.monol1th.pic1.core.Simulation;
 import at.monol1th.pic1.core.observables.Energy;
 import at.monol1th.pic1.core.observables.Momentum;
 import at.monol1th.pic1.core.settings.Settings;
-import at.monol1th.pic1.core.settings.examples.*;
+import at.monol1th.pic1.core.settings.examples.SingleParticleSettings;
 import at.monol1th.pic1.util.display.AsciiDisplay;
 
 import java.text.DecimalFormat;
@@ -21,7 +21,7 @@ public class Main
                 Simulation initialization
          */
 
-        Settings settings = new SingleStreamSettings();
+        Settings settings = new SingleParticleSettings(5.0);
         Simulation sim = new Simulation(settings);
         sim.initialize();
 
