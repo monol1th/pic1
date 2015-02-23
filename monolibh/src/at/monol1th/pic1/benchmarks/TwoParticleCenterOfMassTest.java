@@ -11,6 +11,9 @@ import at.monol1th.pic1.core.particles.movement.PeriodicBoundaryConditions;
 import at.monol1th.pic1.core.particles.movement.RelativisticLeapFrogMover;
 import at.monol1th.pic1.core.settings.Settings;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,19 +28,27 @@ public class TwoParticleCenterOfMassTest {
     public void runTests(double[] timeSteps,
                          int numberOfTestsPerTimeStep,
                          String interpolationType,
-                         int randomSeed)
+                         int randomSeed,
+                         String fileName)   throws FileNotFoundException
     {
-        System.out.println("Type\tdt\tsteps\ttime");
+        //System.out.println("Type\tdt\tsteps\ttime");
+	    File file = new File(fileName);
+	    //file.getParentFile().mkdirs();
+	    PrintWriter writer = new PrintWriter(file);
+
         for(int i = 0; i < timeSteps.length; i++)
         {
-            double relativeAccuracy = Math.pow(10, -5);
+            double relativeAccuracy = Math.pow(10, -7);
 
             double dt = timeSteps[i];
             for(int j = 0; j < numberOfTestsPerTimeStep; j++)
             {
+
+		            System.out.println(i + "," + j);
+
                 try
                 {
-                    Settings currentSetting = new InitialSettings(interpolationType, dt, randomSeed);
+                    Settings currentSetting = new InitialSettings(interpolationType, dt, randomSeed, fileName);
                     Simulation currentSimulation = new Simulation(currentSetting);
                     currentSimulation.initialize();
                     CenterOfMass centerOfMass = new CenterOfMass(currentSimulation);
@@ -48,10 +59,16 @@ public class TwoParticleCenterOfMassTest {
                         currentSimulation.update();
                         if(Math.abs((centerOfMass.computeCenterOfMass() - com0)/com0) > relativeAccuracy)
                         {
-                            System.out.println(interpolationType + "\t"
+	                        writer.println(interpolationType + "\t"
+			                        + dt + "\t"
+			                        + currentSimulation.computationalSteps + "\t"
+			                        + currentSimulation.elapsedTime);
+                            /*
+	                        System.out.println(interpolationType + "\t"
                                     + dt + "\t"
                                     + currentSimulation.computationalSteps + "\t"
                                     + currentSimulation.elapsedTime);
+                            */
                             running = false;
                             break;
                         }
@@ -63,11 +80,12 @@ public class TwoParticleCenterOfMassTest {
                 }
             }
         }
+	    writer.close();
     }
 
 
     private class InitialSettings extends Settings {
-        public InitialSettings(String interpolationType, double timeStep, int randomSeed) throws SimulationParameterException {
+        public InitialSettings(String interpolationType, double timeStep, int randomSeed, String fileName) throws SimulationParameterException {
             this.gridSize = (int) Math.pow(2, 10);
             this.gridSpacing = 0.08;
             this.timeStep = timeStep;
@@ -107,13 +125,13 @@ public class TwoParticleCenterOfMassTest {
 
             Particle p1 = new Particle();
             p1.x = this.gridSize * this.gridSpacing * Math.min(r1, r2);
-            p1.px = 0.01;
+            p1.px = 0.1;
             p1.m = 1.0;
             p1.q = 1.0;
 
             Particle p2 = new Particle();
             p2.x = this.gridSize * this.gridSpacing * Math.max(r1, r2);
-            p2.px = -0.01;
+            p2.px = -0.1;
             p2.m = 1.0;
             p2.q = -1.0;
 

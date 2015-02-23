@@ -21,7 +21,7 @@ public class SingleStreamSettings extends Settings
         super();
 
         this.gridSize          = (int) Math.pow(2, 10);
-        this.gridSpacing       = 2.0/this.gridSize;
+        this.gridSpacing       = 1.0/this.gridSize;
         this.timeStep          = this.gridSpacing * 0.1;
         this.speedOfLight      = this.gridSpacing / this.timeStep * 0.5;
 
@@ -31,7 +31,7 @@ public class SingleStreamSettings extends Settings
         this.fieldSolver                   = new Poisson1DFieldSolver();
         this.fieldUpdater                  = new LeapFrogFieldUpdater();
 
-        int particleCount                      = (int) Math.pow(2, 12);
+        int particleCount                      = (int) Math.pow(2, 13);
         //double initialMomentumParameter         = 0.5;
         int perturbationNodes                   = 4;
         double perturbationAmplitude            = 0.00;
@@ -60,6 +60,6 @@ public class SingleStreamSettings extends Settings
 
     public SingleStreamSettings()
     {
-        this(0.5);
+        this(0.1);
     }
 }

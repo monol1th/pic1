@@ -21,9 +21,9 @@ public class TwoStreamSettings extends Settings
     {
         super();
 
-        this.gridSize = (int) Math.pow(2, 14);
-        this.gridSpacing       = 2.0/this.gridSize;
-        this.timeStep          = this.gridSpacing * 0.25;
+        this.gridSize = (int) Math.pow(2, 9);
+        this.gridSpacing       = 1.0/this.gridSize;
+        this.timeStep          = this.gridSpacing * 0.1;
         this.speedOfLight      = this.gridSpacing / this.timeStep * 0.5;
 
         this.particleMover                 = new RelativisticLeapFrogMover();
@@ -32,11 +32,12 @@ public class TwoStreamSettings extends Settings
         this.fieldSolver                   = new Poisson1DFieldSolver();
         this.fieldUpdater                  = new LeapFrogFieldUpdater();
 
-        int particleCount                      = (int) Math.pow(2, 14);
+        int particleCount                      = (int) Math.pow(2, 8);
         double initialMomentumParameter         = 0.6;
+        double initialMomentumDistributionParameter         = 0.0;
         int perturbationNodes = 3;
-        double perturbationAmplitude = 0.05;
-        double totalCharge                      = Math.pow(2, 14);
+        double perturbationAmplitude = 0.00;
+        double totalCharge                      = Math.pow(2, 13);
 
         this.listOfParticles = new ArrayList<Particle>();
 
@@ -53,8 +54,9 @@ public class TwoStreamSettings extends Settings
             //double r = randomGenerator.nextDouble();
             //p.x = r * this.gridSize * this.gridSpacing;
 
-            p.px = initialMomentumParameter * d * this.speedOfLight;
+            p.px = initialMomentumParameter  * this.speedOfLight * d;
             p.px *= 1.0 + perturbationAmplitude * Math.sin(perturbationNodes * w * 2.0 * Math.PI);
+            p.px *= 1.0 + initialMomentumDistributionParameter * (Math.random()-0.5);
             p.q = totalCharge / particleCount;
             p.m = 1.0;
             this.listOfParticles.add(p);
